@@ -39,7 +39,7 @@ def get_table_download_link(df):
 
 
 def main():
-    price = 1/1000 * st.sidebar.number_input('Property price in K', value=300, step=1)
+    price = 1000 * st.sidebar.number_input('Property price in K', value=300, step=1)
     rehab_cost = st.sidebar.slider("Rehab cost", 0, 100000, step=1000, value=10000)
     closing_cost_pct = st.sidebar.slider("Closing cost % to the property price ", 0, 100, value=5)
     b = Property('test', price=price, rehab_cost=rehab_cost, closing_cost_ratio=closing_cost_pct/100)
@@ -48,10 +48,10 @@ def main():
     interest_rate= 1/100 * st.sidebar.slider('Morgage interest in %', 2.50, 6.00, step=0.01, value=4.00)
     appreciation_year = 1/100 * st.sidebar.slider("Property appreciation - annual average (%) ", 0.0, 20.0, value=3.0)
     hoa = st.sidebar.slider('Monthly HOA', 0,1000, step=10, value=0)
-    tax_value = 0.01 * price
-    tax = 1/100 * st.sidebar.slider("Property tax rate (%) ", 0.00, 5*tax_value, value=tax_value)
+    tax_value = round(0.01 * price / 12)
+    tax = 1/100 * st.sidebar.slider("Property tax", 0.00, 5*tax_value, value=tax_value)
     tax_rate = tax / price
-    insurance_value = 0.004 * price
+    insurance_value = round(0.004 * price / 12)
     insurance = 1/100 * st.sidebar.slider("Monthly insurance rate (%)", 0.00, insurance_value*3, value=insurance_value)
     insurance_rate = insurance / price
     st.text(f'{b.name}')
