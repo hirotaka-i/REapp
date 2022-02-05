@@ -88,8 +88,8 @@ def main():
     st.text(f'Total initial payment: {b.initial_total}')
     
     t = get_table(b)
-	d = t.loc[[12*i for i in range(30)],:]
-	st.table(d)
+    d = t.loc[[12*i for i in range(30)],:]
+    st.table(d)
     
 # git add app.py;git commit -m "debug";git push -u origin main
 
