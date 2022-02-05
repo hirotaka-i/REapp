@@ -51,7 +51,7 @@ def main():
         return(b)
     
     price = 1000 * st.sidebar.number_input('Price (K)', value=400, step=1)
-    rehab_cost = st.sidebar.slider("Rehab cost", 0, 80000, step=1000, value=10000)
+    rehab_cost = st.sidebar.slider("Rehab Cost", 0, 80000, step=1000, value=10000)
     closing_cost_pct = st.sidebar.slider("Closing cost % to the property price ", 0.0, 10.0, value=2.5, step=0.05)
     b = Property('test', price=price, rehab_cost=rehab_cost, closing_cost_ratio=closing_cost_pct/100)
     down_payment_ratio = 1/100 * st.sidebar.slider("Down payment % to the property price ", 0, 100, value=20)
