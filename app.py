@@ -49,10 +49,10 @@ def main():
     appreciation_year = 1/100 * st.sidebar.slider("Property appreciation - annual average (%) ", 0.0, 20.0, value=3.0)
     hoa = st.sidebar.slider('Monthly HOA', 0,1000, step=10, value=0)
     tax_value = round(0.01 * price / 12)
-    tax = 1/100 * st.sidebar.slider("Property tax", 0.00, 5*tax_value, value=tax_value)
+    tax = 1/100 * st.sidebar.slider("Property tax", 0 5*tax_value, value=tax_value)
     tax_rate = tax / price
     insurance_value = round(0.004 * price / 12)
-    insurance = 1/100 * st.sidebar.slider("Monthly insurance rate (%)", 0.00, insurance_value*3, value=insurance_value)
+    insurance = 1/100 * st.sidebar.slider("Monthly insurance rate (%)", 0, insurance_value*3, value=insurance_value)
     insurance_rate = insurance / price
     st.text(f'{b.name}')
 # git add app.py;git commit -m "debug";git push -u origin main
