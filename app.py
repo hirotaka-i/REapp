@@ -70,7 +70,13 @@ def main():
     
     return_year= 1/100 * st.sidebar.slider("Expected investing return for comparison (%, annual)", 0, 20, value=8)
     
-    st.text(f'{b.name}')
+    st.text(f'Monthly loan: {b.pay}')
+    st.text(f'Total initial payment: {b.initial_total}')
+    
+    t = get_table(b)
+	t = t.loc[[12*i for i in range(30)],:]
+	st.table(t)
+    
 # git add app.py;git commit -m "debug";git push -u origin main
 
 if __name__ == '__main__':
