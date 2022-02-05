@@ -39,8 +39,7 @@ def get_table_download_link(df):
 
 
 def analyze(b):	
-	b.sim_loan(down_payment_ratio=down_payment_ratio, years=years, 
-			interest_rate=interest_rate)
+	b.sim_loan(down_payment_ratio, years, interest_rate)
 	b.sim_equity(appreciation_year=appreciation_year)
 	b.sim_ex(hoa=hoa, tax_rate=tax_rate, insurance_rate=insurance_rate, 
 			maintenance_rate=maintenance_rate, inflation_year=inflation_year)
