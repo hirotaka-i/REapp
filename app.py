@@ -81,10 +81,10 @@ def main():
     insurance = 1/100 * st.sidebar.slider("Insurance (monthly)", 0, insurance_value*3, value=insurance_value)
     insurance_rate = insurance * 12 / price
     
-    
     maintenance_value = round(0.005 * price / 12)
     maintenance = 1/100 * st.sidebar.slider("Maintenance (monthly)", 0, maintenance_value*3, value=maintenance_value)
     maintenance_rate = maintenance * 12 / price
+    
     extra_rehab=0
     rent = st.sidebar.slider("Rent (monthly)", 0, 8000, step=10, value=2000)
     vacancy_rate = 1/100 * st.sidebar.slider("Vacancy rate (%)", 0, 100, step=5, value=10)
@@ -101,7 +101,7 @@ def main():
     
     t = get_table(b)
     d = t.loc[[12*i for i in range(30)],:]
-    
+    st.line_chart(d[['tg','invest_change']])
     st.table(d[['period', 'end_balance', 'property_value', 'equity', 'invest']])
     
     st.table(d[['period', 'interest_paid', 'balance_change', 'pmi',
