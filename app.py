@@ -96,13 +96,18 @@ def main():
     
     analyze(b)
     
-    st.text(f'Monthly loan: {b.pay}')
-    st.text(f'Total initial payment: {b.initial_total}')
+    st.text(f'Monthly loan: {b.pay:.2f}')
+    st.text(f'Total initial payment: {b.initial_total:d}')
     
     t = get_table(b)
     d = t.loc[[12*i for i in range(30)],:]
-    st.table(d)
     
+    st.table(d[['period', 'end_balance', 'property_value', 'equity', 'invest']])
+    
+    st.table(d[['period', 'interest_paid', 'balance_change', 'pmi',
+                'pvalue_change', 'hoa', 'tax', 'insurance',
+                'maintenance', 'ex', 'rent', 'income', 'opex', 'noi', 'cf', 'tg',
+                'invest_change']])
 # git add app.py;git commit -m "debug";git push -u origin main
 
 if __name__ == '__main__':
