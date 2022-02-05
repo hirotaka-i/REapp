@@ -86,14 +86,13 @@ def main():
     
     st.text(f'Monthly morgage payment: {b.pay:.2f}')
     st.text(f'Total initial payment: {b.initial_total:.0f}')
-    st.text(f'Total Gain (monthly) [tg] vs gain if invested [invested_change]')
-    st.line_chart(d[['tg','invest_change']])
-    st.text('Snapshot for selected periods')
-    st.text('* morgage payment = interest_paid + balance_change\n* ex = hoa + tax + insurance\n* opex = ex + montly operation expense*\n')
-    
-    
     
     t = get_table(b)
+    st.text(f'Total Gain (monthly) [tg] vs gain if invested [invested_change]')
+    st.line_chart(t[['tg','invest_change']])
+    
+    st.text('Snapshot for selected periods')
+    st.text('* morgage payment = interest_paid + balance_change\n* ex = hoa + tax + insurance\n* opex = ex + montly operation expense')
     periods = [i-1 for i in [1,12,24,36,48,60,96,120,180,240,300,360] if i <= b.n_pay]
     d = t.loc[periods,:].copy()
     st.table(d[['period', 'interest_paid', 'balance_change', 'pmi',
