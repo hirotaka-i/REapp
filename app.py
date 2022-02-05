@@ -90,8 +90,9 @@ def main():
     t = get_table(b)
     periods = [0,12,24,36,48,60,96,120,180,240,300,360]
     periods = [i if i <= b.n_pay]
-    d = t.loc[[periods,:].copy()
-    st.line_chart(d[['tg','invest_change']])
+    d = t.loc[periods,:].copy()
+    d['Total Grouwth including Equity'] = d['tg']
+    st.line_chart(d[['Total Grouwth including Equity','invest_change']])
     st.table(d[['period', 'interest_paid', 'balance_change', 'pmi',
                 'pvalue_change', 'hoa', 'tax', 'insurance',
                 'maintenance', 'ex', 'rent', 'income', 'opex', 'noi', 'cf', 'tg',
