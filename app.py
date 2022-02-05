@@ -38,18 +38,32 @@ def get_table_download_link(df):
 # 	return img 
 
 
-def analyze(b):	
-	b.sim_loan(down_payment_ratio, years, interest_rate)
+def analyze(b):
+	b.sim_loan(down_payment_ratio=down_payment_ratio, years=years, 
+            interest_rate=interest_rate)
 	b.sim_equity(appreciation_year=appreciation_year)
 	b.sim_ex(hoa=hoa, tax_rate=tax_rate, insurance_rate=insurance_rate, 
-			maintenance_rate=maintenance_rate, inflation_year=inflation_year)
+          maintenance_rate=maintenance_rate, inflation_year=inflation_year)
 	b.sim_rent(extra_rehab=extra_rehab, rent=rent, vacancy_rate=vacancy_rate, 
-			op_rate=op_rate)
+            op_rate=op_rate)
 	b.sim_invest(return_year=return_year)
 	return(b)
 
 
 def main():
+    
+    def analyze(b):
+		b.sim_loan(down_payment_ratio=down_payment_ratio, years=years, 
+				interest_rate=interest_rate)
+		b.sim_equity(appreciation_year=appreciation_year)
+		b.sim_ex(hoa=hoa, tax_rate=tax_rate, insurance_rate=insurance_rate, 
+			maintenance_rate=maintenance_rate, inflation_year=inflation_year)
+		b.sim_rent(extra_rehab=extra_rehab, rent=rent, vacancy_rate=vacancy_rate, 
+				op_rate=op_rate)
+		b.sim_invest(return_year=return_year)
+		return(b)
+
+    
 	price = 1000 * st.sidebar.number_input('Property price in K', value=400, step=1)
 	rehab_cost = st.sidebar.slider("Rehab cost", 0, 80000, step=1000, value=10000)
 	closing_cost_pct = st.sidebar.slider("Closing cost % to the property price ", 0.0, 10.0, value=2.5, step=0.05)
