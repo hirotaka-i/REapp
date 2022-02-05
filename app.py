@@ -51,8 +51,18 @@ def analyze(b):
 
 
 def main():
-
-    price = 1000 * st.sidebar.number_input('Property Price (K)', value=400, step=1)
+    def analyze(b):
+        b.sim_loan(down_payment_ratio=down_payment_ratio, years=years, 
+                   interest_rate=interest_rate)
+        b.sim_equity(appreciation_year=appreciation_year)
+        b.sim_ex(hoa=hoa, tax_rate=tax_rate, insurance_rate=insurance_rate, 
+                 maintenance_rate=maintenance_rate, inflation_year=inflation_year)
+        b.sim_rent(extra_rehab=extra_rehab, rent=rent, vacancy_rate=vacancy_rate, 
+                   op_rate=op_rate)
+        b.sim_invest(return_year=return_year)
+        return(b)
+    
+    price = 1000 * st.sidebar.number_input('Price (K)', value=400, step=1)
     rehab_cost = st.sidebar.slider("Rehab cost", 0, 80000, step=1000, value=10000)
     closing_cost_pct = st.sidebar.slider("Closing cost % to the property price ", 0.0, 10.0, value=2.5, step=0.05)
     b = Property('test', price=price, rehab_cost=rehab_cost, closing_cost_ratio=closing_cost_pct/100)
