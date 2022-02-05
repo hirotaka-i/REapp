@@ -45,7 +45,7 @@ def main():
     closing_cost_pct = st.sidebar.slider("Closing cost % to the property price ", 0, 100, value=5)
     b = Property('test', price=price, rehab_cost=rehab_cost, closing_cost_ratio=closing_cost_pct/100)
     down_payment_ratio = 1/100 * st.sidebar.slider("Down payment % to the property price ", 0, 100, vaelue=20)
- 	st.text(f'{b.name}')
+    st.text(f'{b.name}')
 # git add app.py;git commit -m "debug";git push -u origin main
 
 if __name__ == '__main__':
