@@ -76,7 +76,7 @@ def main():
     extra_rehab=0
     rent = st.sidebar.slider("Rent (monthly)", 0, 8000, step=10, value=2000)
     vacancy_rate = 1/100 * st.sidebar.slider("Vacancy Rate (%)", 0, 100, step=5, value=10)
-    op_value = round(0.015 * rent / 12)
+    op_value = round(0.015 * rent)
     op = 1/100 * st.sidebar.slider("Operating Expenses (monthly)", 0, op_value*3, value=op_value)
     op_rate = op / rent
     
