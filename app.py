@@ -57,7 +57,7 @@ def main():
     down_payment_ratio = 1/100 * st.sidebar.slider("Down payment % to the property price ", 0, 100, value=20)
     years = st.sidebar.slider("Morgage duration in years", 0, 30, value=30)
     interest_rate= 1/100 * st.sidebar.slider('Morgage interest in %', 2.50, 6.00, step=0.01, value=4.00)
-    appreciation_year = 1/100 * st.sidebar.slider("Property appreciation - annual average (%) ", 0.0, 20.0, value=3.0)
+    appreciation_year = 1/100 * st.sidebar.slider("Property appreciation - annual average (%) ", 0.0, 10.0, value=3.0 step=0.1)
     inflation_year = 1/100 * st.sidebar.slider("Annual inflation (%) ", 0.0, 10.0, value=2.0)
     hoa = st.sidebar.slider('Monthly HOA', 0,1000, step=10, value=0)
     
@@ -88,8 +88,7 @@ def main():
     st.text(f'Total initial payment: {b.initial_total:.0f}')
     
     t = get_table(b)
-    periods = [0,12,24,36,48,60,96,120,180,240,300,360]
-    periods = [i if i <= b.n_pay]
+    periods = [i if i <= b.n_pay for i in [0,12,24,36,48,60,96,120,180,240,300,360]]
     d = t.loc[periods,:].copy()
     d['Total Grouwth including Equity'] = d['tg']
     st.line_chart(d[['Total Grouwth including Equity','invest_change']])
