@@ -97,7 +97,7 @@ def main():
     analyze(b)
     
     st.text(f'Monthly loan: {b.pay:.2f}')
-    st.text(f'Total initial payment: {b.initial_total:d}')
+    st.text(f'Total initial payment: {b.initial_total:.0f}')
     
     t = get_table(b)
     d = t.loc[[12*i for i in range(30)],:]
