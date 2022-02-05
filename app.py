@@ -40,7 +40,7 @@ def get_table_download_link(df):
 
 def main():
     price = 1000 * st.sidebar.number_input('Property price in K', value=400, step=1)
-    rehab_cost = st.sidebar.slider("Rehab cost", 0, 100000, step=1000, value=10000)
+    rehab_cost = st.sidebar.slider("Rehab cost", 0, 80000, step=1000, value=10000)
     closing_cost_pct = st.sidebar.slider("Closing cost % to the property price ", 0.0, 10.0, value=2.5, step=0.05)
     b = Property('test', price=price, rehab_cost=rehab_cost, closing_cost_ratio=closing_cost_pct/100)
     down_payment_ratio = 1/100 * st.sidebar.slider("Down payment % to the property price ", 0, 100, value=20)
@@ -61,10 +61,14 @@ def main():
     maintenance_value = round(0.005 * price / 12)
     maintenance = 1/100 * st.sidebar.slider("Maintenance (monthly)", 0, maintenance_value*3, value=maintenance_value)
     maintenance_rate = maintenance * 12 / price
-
-    maintenance_value = round(0.005 * price / 12)
-    maintenance = 1/100 * st.sidebar.slider("Maintenance (monthly)", 0, maintenance_value*3, value=maintenance_value)
-    maintenance_rate = maintenance * 12 / price
+    extra_rehab=0
+    rent = st.sidebar.slider("Rent (monthly)", 0, 8000, step=10, value=2000)
+    vacancy_rate = 1/100 * st.sidebar.slider("Vacancy rate (%)", 0, 100, step=5, value=10)
+    op_value = round(0.015 * rent / 12)
+    op = 1/100 * st.sidebar.slider("Operating expenses for rental (monthly)", 0, op_value*3, value=op_value)
+    op_rate = op / rent
+    
+    return_year= 1/100 * st.sidebar.slider("Expected investing return for comparison (%, annual)", 0, 20, value=8)
     
     st.text(f'{b.name}')
 # git add app.py;git commit -m "debug";git push -u origin main
