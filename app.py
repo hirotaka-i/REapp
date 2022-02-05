@@ -57,7 +57,7 @@ def main():
     down_payment_ratio = 1/100 * st.sidebar.slider("Down Payment (% to the property price)", 0, 100, value=20)
     years = st.sidebar.slider("Morgage Length (years)", 0, 30, value=30)
     interest_rate= 1/100 * st.sidebar.slider('Morgage Interest (%)', 2.50, 6.00, step=0.01, value=4.00)
-    appreciation_year = 1/100 * st.sidebar.slider("Appreciation (%)", 0.0, 10.0, value=3.0 step=0.1)
+    appreciation_year = 1/100 * st.sidebar.slider("Appreciation (%)", 0.0, 10.0, value=3.0, step=0.1)
     inflation_year = 1/100 * st.sidebar.slider("Inflation (%) ", 0.0, 10.0, value=2.0)
     hoa = st.sidebar.slider('HOA (monthly)', 0,1000, step=10, value=0)
     
@@ -84,6 +84,7 @@ def main():
     
     analyze(b)
     
+    st.text(f'Monthly loan: {b.pay:.2f}')
     st.text(f'Monthly loan: {b.pay:.2f}')
     st.text(f'Total initial payment: {b.initial_total:.0f}')
     
