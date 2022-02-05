@@ -74,11 +74,11 @@ def main():
     hoa = st.sidebar.slider('Monthly HOA', 0,1000, step=10, value=0)
     
     tax_value = round(0.01 * price / 12)
-    tax = 1/100 * st.sidebar.slider("Property tax (monthly) ", 0, 5*tax_value, value=tax_value)
+    tax = st.sidebar.slider("Property tax (monthly) ", 0, 5*tax_value, value=tax_value)
     tax_rate = tax * 12 / price
     
     insurance_value = round(0.004 * price / 12)
-    insurance = 1/100 * st.sidebar.slider("Insurance (monthly)", 0, insurance_value*3, value=insurance_value)
+    insurance = st.sidebar.slider("Insurance (monthly)", 0, insurance_value*3, value=insurance_value)
     insurance_rate = insurance * 12 / price
     
     maintenance_value = round(0.005 * price / 12)
