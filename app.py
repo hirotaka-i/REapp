@@ -45,8 +45,15 @@ def main():
     b = Property('test', price=price, rehab_cost=rehab_cost, closing_cost_ratio=closing_cost_pct/100)
     down_payment_ratio = 1/100 * st.sidebar.slider("Down payment % to the property price ", 0, 100, value=20)
     years = st.sidebar.slider("Morgage duration in years", 0, 30, value=30)
-    interest_rate= 1/100 * st.sidebar.slider('Morgage interest in %', 2.50, 6.00, step=0.01)
+    interest_rate= 1/100 * st.sidebar.slider('Morgage interest in %', 2.50, 6.00, step=0.01, value=4)
     appreciation_year = 1/100 * st.sidebar.slider("Property appreciation - annual average (%) ", 0, 50, value=3)
+    hoa = st.sidebar.slider('Monthly HOA', 0,1000, step=10, value=0)
+    tax_value = 0.01 * price
+    tax = 1/100 * st.sidebar.slider("Property tax rate (%) ", 0, 5*tax_value, value=tax_value)
+    tax_rate = tax / price
+    insurance_value = 0.004 * price
+    insurance = 1/100 * st.sidebar.slider("Monthly insurance rate (%)", 0, insurance_value*3, value=insurance_value)
+    insurance_rate = insurance / price
     st.text(f'{b.name}')
 # git add app.py;git commit -m "debug";git push -u origin main
 
