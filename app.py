@@ -89,7 +89,7 @@ def main():
     st.text(f'Total initial payment: {b.initial_total:.0f}')
     
     t = get_table(b)
-    periods = [i if i <= b.n_pay for i in [0,12,24,36,48,60,96,120,180,240,300,360]]
+    periods = [i for i in [0,12,24,36,48,60,96,120,180,240,300,360] if i <= b.n_pay ]
     d = t.loc[periods,:].copy()
     d['Total Grouwth including Equity'] = d['tg']
     st.line_chart(d[['Total Grouwth including Equity','invest_change']])
