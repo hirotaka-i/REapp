@@ -52,7 +52,7 @@ def main():
     
     price = 1000 * st.sidebar.number_input('Price (K)', value=400, step=1)
     rehab_cost = st.sidebar.slider("Rehab Cost", 0, 80000, step=1000, value=10000)
-    closing_cost_pct = st.sidebar.slider("Closing cost % to the property price ", 0.0, 10.0, value=2.5, step=0.05)
+    closing_cost_pct = st.sidebar.slider("Closing Cost (% to the property price)", 0.0, 10.0, value=2.5, step=0.05)
     b = Property('test', price=price, rehab_cost=rehab_cost, closing_cost_ratio=closing_cost_pct/100)
     down_payment_ratio = 1/100 * st.sidebar.slider("Down payment % to the property price ", 0, 100, value=20)
     years = st.sidebar.slider("Morgage duration in years", 0, 30, value=30)
@@ -90,12 +90,13 @@ def main():
     t = get_table(b)
     d = t.loc[[12*i for i in range(30)],:]
     st.line_chart(d[['tg','invest_change']])
-    st.table(d[['period', 'end_balance', 'property_value', 'equity', 'invest']])
-    
     st.table(d[['period', 'interest_paid', 'balance_change', 'pmi',
                 'pvalue_change', 'hoa', 'tax', 'insurance',
                 'maintenance', 'ex', 'rent', 'income', 'opex', 'noi', 'cf', 'tg',
                 'invest_change']])
+    st.table(d[['period', 'end_balance', 'property_value', 'equity', 'invest']])
+    
+
 # git add app.py;git commit -m "debug";git push -u origin main
 
 if __name__ == '__main__':
