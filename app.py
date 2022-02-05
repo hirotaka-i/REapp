@@ -62,7 +62,7 @@ def main():
     hoa = st.sidebar.slider('HOA (monthly)', 0,1000, step=10, value=0)
     
     tax_value = round(0.01 * price / 12)
-    tax = st.sidebar.slider("Property tax (monthly) ", 0, 5*tax_value, value=tax_value)
+    tax = st.sidebar.slider("Tax (monthly) ", 0, 5*tax_value, value=tax_value)
     tax_rate = tax * 12 / price
     
     insurance_value = round(0.004 * price / 12)
@@ -75,12 +75,12 @@ def main():
     
     extra_rehab=0
     rent = st.sidebar.slider("Rent (monthly)", 0, 8000, step=10, value=2000)
-    vacancy_rate = 1/100 * st.sidebar.slider("Vacancy rate (%)", 0, 100, step=5, value=10)
+    vacancy_rate = 1/100 * st.sidebar.slider("Vacancy Rate (%)", 0, 100, step=5, value=10)
     op_value = round(0.015 * rent / 12)
-    op = 1/100 * st.sidebar.slider("Operating expenses for rental (monthly)", 0, op_value*3, value=op_value)
+    op = 1/100 * st.sidebar.slider("Operating Expenses (monthly)", 0, op_value*3, value=op_value)
     op_rate = op / rent
     
-    return_year= 1/100 * st.sidebar.slider("Expected investing return for comparison (%, annual)", 0, 20, value=8)
+    return_year= 1/100 * st.sidebar.slider("Invest Return to compare (%, annual)", 0, 20, value=8)
     
     analyze(b)
     
