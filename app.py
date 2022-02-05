@@ -8,7 +8,7 @@ import base64
 import datetime as dt
 from property_module import Property
 from myfunc2 import get_table
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import pandas as pd
 
 # import matplotlib.pyplot as plt # don't work...
