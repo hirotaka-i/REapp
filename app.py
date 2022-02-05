@@ -82,7 +82,7 @@ def main():
     insurance_rate = insurance * 12 / price
     
     maintenance_value = round(0.005 * price / 12)
-    maintenance = 1/100 * st.sidebar.slider("Maintenance (monthly)", 0, maintenance_value*3, value=maintenance_value)
+    maintenance = st.sidebar.slider("Maintenance (monthly)", 0, maintenance_value*3, value=maintenance_value)
     maintenance_rate = maintenance * 12 / price
     
     extra_rehab=0
