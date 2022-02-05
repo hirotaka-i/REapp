@@ -49,19 +49,18 @@ def analyze(b):
     b.sim_invest(return_year=return_year)
     return(b)
 
-def analyze(b):
-    b.sim_loan(down_payment_ratio=down_payment_ratio, years=years, 
-                interest_rate=interest_rate)
-    b.sim_equity(appreciation_year=appreciation_year)
-    b.sim_ex(hoa=hoa, tax_rate=tax_rate, insurance_rate=insurance_rate, 
-                maintenance_rate=maintenance_rate, inflation_year=inflation_year)
-    b.sim_rent(extra_rehab=extra_rehab, rent=rent, vacancy_rate=vacancy_rate, 
-                op_rate=op_rate)
-    b.sim_invest(return_year=return_year)
-    return(b)
-
 def main():
 
+	def analyze(b):
+		b.sim_loan(down_payment_ratio=down_payment_ratio, years=years, 
+					interest_rate=interest_rate)
+		b.sim_equity(appreciation_year=appreciation_year)
+		b.sim_ex(hoa=hoa, tax_rate=tax_rate, insurance_rate=insurance_rate, 
+					maintenance_rate=maintenance_rate, inflation_year=inflation_year)
+		b.sim_rent(extra_rehab=extra_rehab, rent=rent, vacancy_rate=vacancy_rate, 
+					op_rate=op_rate)
+		b.sim_invest(return_year=return_year)
+		return(b)
     
     price = 1000 * st.sidebar.number_input('Property Price (in K)', value=400, step=1)
     rehab_cost = st.sidebar.slider("Rehab Cost", 0, 80000, step=1000, value=10000)
@@ -101,18 +100,14 @@ def main():
     st.text(f'Total initial payment: {b.initial_total:.0f}')
     
     t = get_table(b)
-    # d = t.loc[[i if i in [0, 12, 24, 36, 48, 60, 96, 120, 180, 240, 300, 360] for i in t.period],:]
-    d = t.iloc[[0, 12, 24, 36, 48, 60, 96, 120, 180, 240, 300, 360],:]
-    d['Total Gain (including equity growth)'] = d['tg']
-    st.line_chart(d[['Total Gain (including equity growth)' , 'invest_change']])
-
+    d = t.loc[[0, 12, 24, 36, 48, 60, 96, 120, 180, 240, 300,,:]
+    st.line_chart(d[['tg','invest_change']])
+    st.table(d[['period', 'end_balance', 'property_value', 'equity', 'invest']])
+    
     st.table(d[['period', 'interest_paid', 'balance_change', 'pmi',
                 'pvalue_change', 'hoa', 'tax', 'insurance',
                 'maintenance', 'ex', 'rent', 'income', 'opex', 'noi', 'cf', 'tg',
                 'invest_change']])
-    st.table(d[['period', 'end_balance', 'property_value', 'equity', 'invest']])
-    
-
 # git add app.py;git commit -m "debug";git push -u origin main
 
 if __name__ == '__main__':
