@@ -90,7 +90,7 @@ def main():
     t = get_table(b)
     periods = [0,12,24,36,48,60,96,120,180,240,300,360]
     periods = [i if i <= b.n_pay]
-    d = t.loc[[i for i],:]
+    d = t.loc[[periods,:].copy()
     st.line_chart(d[['tg','invest_change']])
     st.table(d[['period', 'interest_paid', 'balance_change', 'pmi',
                 'pvalue_change', 'hoa', 'tax', 'insurance',
