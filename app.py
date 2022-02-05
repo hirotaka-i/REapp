@@ -42,9 +42,9 @@ def main():
     priceK = st.sidebar.number_input('Property price in K', value=300, step=1)
     price = priceK * 1000
     rehab_cost = st.sidebar.slider("Rehab cost", 0, 100000, step=1000)
-    closing_cost_ratio = st.sidebar.slider("Closing cost ratio to the property price", 0, 1)
-    b = Property('test', price=price, rehab_cost=rehab_cost, closing_cost_ratio=closing_cost_ratio)
-    st.text(f'b.name')
+    closing_cost_pct = st.sidebar.slider("Closing cost ratio to the property price", 0, 100)
+    b = Property('test', price=price, rehab_cost=rehab_cost, closing_cost_ratio=closing_cost_pct/100)
+    st.text(f'{b.name}')
 
 # git add app.py;git commit -m "debug";git push -u origin main
 
