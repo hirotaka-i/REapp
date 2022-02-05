@@ -102,7 +102,7 @@ def main():
     
     t = get_table(b)
     # d = t.loc[[i if i in [0, 12, 24, 36, 48, 60, 96, 120, 180, 240, 300, 360] for i in t.period],:]
-    d = t.loc[[0, 12, 24, 36, 48, 60, 96, 120, 180, 240, 300, 360],:]
+    d = t.iloc[[0, 12, 24, 36, 48, 60, 96, 120, 180, 240, 300, 360],:]
     d['Total Gain (including equity growth)'] = d['tg']
     st.line_chart(d[['Total Gain (including equity growth)' , 'invest_change']])
 
