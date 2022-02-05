@@ -106,12 +106,13 @@ def main():
     d['Total Gain (including equity growth)'] = d['tg']
     st.line_chart(d[['Total Gain (including equity growth)' , 'invest_change']])
 
-    st.table(d[['period', 'end_balance', 'property_value', 'equity', 'invest']])
-    
     st.table(d[['period', 'interest_paid', 'balance_change', 'pmi',
                 'pvalue_change', 'hoa', 'tax', 'insurance',
                 'maintenance', 'ex', 'rent', 'income', 'opex', 'noi', 'cf', 'tg',
                 'invest_change']])
+    st.table(d[['period', 'end_balance', 'property_value', 'equity', 'invest']])
+    
+
 # git add app.py;git commit -m "debug";git push -u origin main
 
 if __name__ == '__main__':
