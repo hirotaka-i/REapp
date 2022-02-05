@@ -42,8 +42,7 @@ def main():
     priceK = st.sidebar.number_input('Property price in K', value=300, step=1)
     price = priceK * 1000
     rehab_cost = st.sidebar.slider("Rehab cost", 0, 100000, step=1000)
-    closing_cost_ratio = st.sidebar.slider("Closing cost ratio to the property price",
-                                           0, 1, step=0.01)
+    closing_cost_ratio = st.sidebar.slider("Closing cost ratio to the property price", 0, 1, step=0.01)
     b = Property('test', price=600000, rehab_cost=0, closing_cost_ratio=0.025)
     st.text(f'b.name')
 
