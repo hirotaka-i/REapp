@@ -45,7 +45,7 @@ def main():
     b = Property('test', price=price, rehab_cost=rehab_cost, closing_cost_ratio=closing_cost_pct/100)
     down_payment_ratio = 1/100 * st.sidebar.slider("Down payment % to the property price ", 0, 100, value=20)
     years = st.sidebar.slider("Morgage duration in years", 0, 30, value=30)
-    interest_rate= 1/100 * st.sidebar.number_input('Morgage interest in %', value=4, step=0.01)
+    interest_rate= 1/100 * st.sidebar.number_input('Morgage interest in %', value=4.00, step=0.01)
     appreciation_year = 1/100 * st.sidebar.slider("Property appreciation - annual average (%) ", 0, 50, value=3)
     st.text(f'{b.name}')
 # git add app.py;git commit -m "debug";git push -u origin main
