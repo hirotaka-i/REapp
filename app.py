@@ -38,19 +38,29 @@ def get_table_download_link(df):
 #     return img 
 
 
-# def analyze(b):	
-#     b.sim_loan(down_payment_ratio=down_payment_ratio, years=years, 
-#             interest_rate=interest_rate)
-#     b.sim_equity(appreciation_year=appreciation_year)
-#     b.sim_ex(hoa=hoa, tax_rate=tax_rate, insurance_rate=insurance_rate, 
-#           maintenance_rate=maintenance_rate, inflation_year=inflation_year)
-#     b.sim_rent(extra_rehab=extra_rehab, rent=rent, vacancy_rate=vacancy_rate, 
-#             op_rate=op_rate)
-#     b.sim_invest(return_year=return_year)
-#     return(b)
+def analyze(b):
+    b.sim_loan(down_payment_ratio=down_payment_ratio, years=years, 
+            interest_rate=interest_rate)
+    b.sim_equity(appreciation_year=appreciation_year)
+    b.sim_ex(hoa=hoa, tax_rate=tax_rate, insurance_rate=insurance_rate, 
+          maintenance_rate=maintenance_rate, inflation_year=inflation_year)
+    b.sim_rent(extra_rehab=extra_rehab, rent=rent, vacancy_rate=vacancy_rate, 
+            op_rate=op_rate)
+    b.sim_invest(return_year=return_year)
+    return(b)
 
 
 def main():
+    def analyze(b):
+        b.sim_loan(down_payment_ratio=down_payment_ratio, years=years, 
+                   interest_rate=interest_rate)
+        b.sim_equity(appreciation_year=appreciation_year)
+        b.sim_ex(hoa=hoa, tax_rate=tax_rate, insurance_rate=insurance_rate, 
+                 maintenance_rate=maintenance_rate, inflation_year=inflation_year)
+        b.sim_rent(extra_rehab=extra_rehab, rent=rent, vacancy_rate=vacancy_rate, 
+                   op_rate=op_rate)
+        b.sim_invest(return_year=return_year)
+        return(b)
     
     price = 1000 * st.sidebar.number_input('Property price in K', value=400, step=1)
     rehab_cost = st.sidebar.slider("Rehab cost", 0, 80000, step=1000, value=10000)
@@ -84,20 +94,20 @@ def main():
     
     return_year= 1/100 * st.sidebar.slider("Expected investing return for comparison (%, annual)", 0, 20, value=8)
     
-    # analyze(b)
+    analyze(b)
     
-    # st.text(f'Monthly loan: {b.pay:.2f}')
-    # st.text(f'Total initial payment: {b.initial_total:.0f}')
+    st.text(f'Monthly loan: {b.pay:.2f}')
+    st.text(f'Total initial payment: {b.initial_total:.0f}')
     
-    # t = get_table(b)
-    # d = t.loc[[12*i for i in range(30)],:]
-    # st.line_chart(d[['tg','invest_change']])
-    # st.table(d[['period', 'end_balance', 'property_value', 'equity', 'invest']])
+    t = get_table(b)
+    d = t.loc[[12*i for i in range(30)],:]
+    st.line_chart(d[['tg','invest_change']])
+    st.table(d[['period', 'end_balance', 'property_value', 'equity', 'invest']])
     
-    # st.table(d[['period', 'interest_paid', 'balance_change', 'pmi',
-    #             'pvalue_change', 'hoa', 'tax', 'insurance',
-    #             'maintenance', 'ex', 'rent', 'income', 'opex', 'noi', 'cf', 'tg',
-    #             'invest_change']])
+    st.table(d[['period', 'interest_paid', 'balance_change', 'pmi',
+                'pvalue_change', 'hoa', 'tax', 'insurance',
+                'maintenance', 'ex', 'rent', 'income', 'opex', 'noi', 'cf', 'tg',
+                'invest_change']])
 # git add app.py;git commit -m "debug";git push -u origin main
 
 if __name__ == '__main__':
