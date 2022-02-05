@@ -41,7 +41,7 @@ def get_table_download_link(df):
 def main():
     priceK = st.sidebar.number_input('Property price in K')
     price = priceK * 1000
-    rehab_cost = st.sidebar.Slider("Rehab cost", 0, 100000, 1000)
+    rehab_cost = st.sidebar.slider("Rehab cost", 0, 100000, 1000)
     closing_cost_ratio = st.sidebar.Slider("Closing cost ratio to the property price",
                                            0, 1, 0.05)
     b = Property('test', price=600000, rehab_cost=0, closing_cost_ratio=0.025)
