@@ -80,7 +80,7 @@ def main():
     op = st.sidebar.slider("Operating Expenses (monthly)", 0, op_value*3, value=op_value)
     op_rate = op / rent
     
-    return_year= 1/100 * st.sidebar.slider("Invest Return to compare (%, annual)", 0, 20, value=8)
+    return_year= 1/100 * st.sidebar.slider("Invest Return to compare (%, annual)", 0.0, 15.0, value=8, step=0.1)
     
     analyze(b)
     
