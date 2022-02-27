@@ -117,11 +117,10 @@ def main():
     
     periods = [i for i in period_list if i <= b.n_pay]
     d = t.loc[periods,:].copy()
-    # st.dataframe(d[['interest_paid', 'balance_change', 'pmi',
-    #             'pvalue_change', 'hoa', 'tax', 'insurance',
-    #             'maintenance', 'ex', 'rent', 'income', 'opex', 'noi', 'cf', 'tg',
-    #             'invest_change', 'invest', 'RE-Cap']].T,  height=500)
-    st.dataframe(d,  height=2500)
+    st.dataframe(d[['interest_paid', 'balance_change', 'pmi',
+                'pvalue_change', 'hoa', 'tax', 'insurance',
+                'maintenance', 'ex', 'rent', 'income', 'opex', 'noi', 'cf', 'tg',
+                'invest_change', 'invest', 'RE-Cap']],  height=500)
     st.markdown('* pvalue_change = property appreciatioon (at the month)')
     
     st.subheader('All numbers')
