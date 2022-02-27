@@ -120,7 +120,7 @@ def main():
     st.dataframe(d[['interest_paid', 'balance_change', 'pmi',
                 'pvalue_change', 'hoa', 'tax', 'insurance',
                 'maintenance', 'ex', 'rent', 'income', 'opex', 'noi', 'cf', 'tg',
-                'invest_change', 'invest', 'RE-Cap']].T,  height=8000)
+                'invest_change', 'invest', 'RE-Cap']].T,  height=500)
     st.markdown('* pvalue_change = property appreciatioon (at the month)')
     
     st.subheader('All numbers')
