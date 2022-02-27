@@ -2,10 +2,11 @@ import pandas as pd
 from myfunc1 import calc_compunded_value,calc_loan
 
 class Property:
-    def __init__(self, name, price, rehab_cost, closing_cost_ratio=0.03):
+    def __init__(self, name, price, rehab_cost, rehab_add, closing_cost_ratio=0.03):
         self.name = name
         self.price = price
         self.rehab_cost = rehab_cost
+        self.rehab_add = rehab_add
         self.closing_cost_ratio = closing_cost_ratio
         self.initial_cost = price * closing_cost_ratio + rehab_cost
     
@@ -24,14 +25,14 @@ class Property:
         self.balance_change = t['balance_change']
         self.end_balance = t['end_balance']
         # PMI
-        balance80 = self.price * 0.8
+        balance80 = (self.price + self.rehab_add) * 0.8
         self.pmi = [b * 0.01/12 if b > balance80
                     else 0 for b in self.end_balance]
             
     def sim_equity(self, appreciation_year):
         self.appreciation_year = appreciation_year
         r = (1 + appreciation_year)**(1/12) - 1
-        t = calc_compunded_value(self.price, r, self.n_pay)
+        t = calc_compunded_value(self.price + self.rehab_add, r, self.n_pay)
         self.property_value = t['value']
         self.pvalue_change = t['value_change']
         self.equity = [x-y for x,y in zip(self.property_value,self.end_balance)]
