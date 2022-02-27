@@ -57,7 +57,6 @@ def main():
     else:
         op_rate = op / rent
     
-
     b = Property('test', price=price, rehab_cost=rehab_cost, rehab_add=rehab_add, closing_cost_ratio=closing_cost_pct/100)
     b.sim_loan(down_payment_ratio=down_payment_ratio, years=years, 
                interest_rate=interest_rate)
@@ -121,7 +120,7 @@ def main():
     st.dataframe(d[['interest_paid', 'balance_change', 'pmi',
                 'pvalue_change', 'hoa', 'tax', 'insurance',
                 'maintenance', 'ex', 'rent', 'income', 'opex', 'noi', 'cf', 'tg',
-                'invest_change', 'invest', 'RE-Cap']].T,  height=4000)
+                'invest_change', 'invest', 'RE-Cap']].T,  height=3000)
     st.markdown('* pvalue_change = property appreciatioon (at the month)')
     
     st.subheader('All numbers')
